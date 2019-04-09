@@ -9,7 +9,6 @@ public class Shuffler {
 	 */
 	private static final int SHUFFLE_COUNT = 1;
 
-
 	/**
 	 * Tests shuffling methods.
 	 * @param args is not used.
@@ -51,6 +50,17 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int j = 0;
+		for(int k = 0; k <= (values.length-1); k += 2) {
+			shuffled[k] = values[j];
+			j++;
+		}
+		for(int k = 1; k <= (values.length-1); k += 2) {
+			shuffled[k] = values[j];
+			j++;
+		}
+		values = shuffled;
 	}
 
 	/**
@@ -66,5 +76,16 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		for(int k = values.length-1; k > 0; k--) {
+			int random = (int) Math.random() * (k+1);
+			int placeholder = values[random];
+			values[random] = values[k];
+			values[k] = placeholder;
+			shuffled = values;
+		}
+		for(int i = 0; i < shuffled.length; i++) {
+			System.out.println(shuffled[i]);
+		}
 	}
 }
