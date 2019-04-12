@@ -29,7 +29,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {0, 1, 2, 3, 4, 5};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -51,7 +51,7 @@ public class Shuffler {
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		int[] shuffled = new int[values.length];
-		int j = 0;
+		int j=0;
 		for(int k = 0; k <= (values.length-1); k += 2) {
 			shuffled[k] = values[j];
 			j++;
@@ -60,7 +60,9 @@ public class Shuffler {
 			shuffled[k] = values[j];
 			j++;
 		}
-		values = shuffled;
+		for(int i = 0; i < shuffled.length; i++) {
+			values[i] = shuffled[i];
+		}
 	}
 
 	/**
@@ -76,16 +78,11 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-		int[] shuffled = new int[values.length];
 		for(int k = values.length-1; k > 0; k--) {
-			int random = (int) Math.random() * (k+1);
+			int random = (int) (Math.random() * (k+1));
 			int placeholder = values[random];
 			values[random] = values[k];
 			values[k] = placeholder;
-			shuffled = values;
-		}
-		for(int i = 0; i < shuffled.length; i++) {
-			System.out.println(shuffled[i]);
 		}
 	}
 }
